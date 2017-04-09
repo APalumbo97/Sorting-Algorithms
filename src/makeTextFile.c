@@ -17,7 +17,7 @@ int main(void) {
     int ctr, num;
 
     // Generates the random numbers and adds them to the file.
-    for(ctr = 0; ctr < NUM_OF_INTEGERS - 1; ctr++) {
+    for (ctr = 0; ctr < NUM_OF_INTEGERS - 1; ctr++) {
         num = rand() % MAX_VAL;
         fprintf(pFile, "%d\n", num);
     }

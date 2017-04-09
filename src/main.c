@@ -18,7 +18,7 @@
  */
 void resetArray(int *pOriginal, int *pNew, int size) {
     int ctr;
-    for(ctr = 0; ctr < size; ctr++) {
+    for (ctr = 0; ctr < size; ctr++) {
         pNew[ctr] = pOriginal[ctr];
     }
 }
@@ -32,7 +32,7 @@ int main(void) {
     double totalTime;
     int ctr, count;
     FILE *pFile = fopen("input/test.txt", "r");
-    if(pFile == NULL) {
+    if (pFile == NULL) {
         printf("Error reading file.\n");
     }
     int data[MAXSIZE];
@@ -41,14 +41,14 @@ int main(void) {
     int scan;
 
     // Reads in the numbers from the text file.
-    while(!feof(pFile)) {
+    while (!feof(pFile)) {
         scan = fscanf(pFile, "%d", &data[ctr]);
         ctr++;
     }
 
     // Copies the data to a fresh array that can be used for sorting.
     int cleanedData[ctr];
-    for(count = 0; count < ctr; count++) {
+    for (count = 0; count < ctr; count++) {
         cleanedData[count] = data[count];
     }
     int *pOrig = data;

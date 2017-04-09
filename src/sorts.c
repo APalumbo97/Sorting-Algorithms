@@ -16,7 +16,7 @@
 void printArray(int *pData, int size, char *type) {
     printf("%s Array:\n", type);
     int ctr;
-    for(ctr = 0; ctr < size; ctr ++) {
+    for (ctr = 0; ctr < size; ctr ++) {
         printf("%d\n", pData[ctr]);
     }
 }
@@ -28,9 +28,9 @@ void printArray(int *pData, int size, char *type) {
  */
 void insertionSort(int *pData, int size) {
     int i, j, k;
-    for(i = 1; i <= size; i++) {
+    for (i = 1; i <= size; i++) {
         j = i;
-        while(j > 0 && pData[j] < pData[j - 1]) {
+        while (j > 0 && pData[j] < pData[j - 1]) {
             k = pData[j];
             pData[j] = pData[j - 1];
             pData[j - 1] = k;
@@ -48,32 +48,30 @@ void insertionSort(int *pData, int size) {
  */
 void mergeSort(int *pData, int *pDataB, int low, int high) {
     int mid, l1, l2, i;
-    if(low < high) {
+    if (low < high) {
         mid = (low + high) / 2;
         mergeSort(pData, pDataB, low, mid);
         mergeSort(pData, pDataB, mid+1, high);
-        for(l1 = low, l2 = mid + 1, i = low; l1 <= mid && l2 <= high; i++) {
-            if(pData[l1] <= pData[l2]) {
+        for (l1 = low, l2 = mid + 1, i = low; l1 <= mid && l2 <= high; i++) {
+            if (pData[l1] <= pData[l2]) {
                 pDataB[i] = pData[l1++];
-            }
-            else {
+            } else {
                 pDataB[i] = pData[l2++];
             }
         }
 
-        while(l1 <= mid) {
+        while (l1 <= mid) {
             pDataB[i++] = pData[l1++];
         }
 
-        while(l2 <= high) {
+        while (l2 <= high) {
             pDataB[i++] = pData[l2++];
         }
 
-        for(i = low; i <= high; i++) {
+        for (i = low; i <= high; i++) {
             pData[i] = pDataB[i];
         }
-    }
-    else {
+    } else {
         return;
     }
 }
@@ -107,20 +105,20 @@ int choosePivot(int i, int j) {
  */
 void quickSort(int *pData, int m, int n) {
     int key, i, j, k;
-    if(m < n) {
+    if (m < n) {
         k = choosePivot(m, n);
         swap(&pData[m], &pData[k]);
         key = pData[m];
         i = m + 1;
         j = n;
-        while(i <= j) {
-            while(i <= n && pData[i] <= key) {
+        while (i <= j) {
+            while (i <= n && pData[i] <= key) {
                 i++;
             }
-            while(j >= m && pData[j] > key) {
+            while (j >= m && pData[j] > key) {
                 j--;
             }
-            if(i < j) {
+            if (i < j) {
                 swap(&pData[i], &pData[j]);
             }
         }
@@ -138,11 +136,11 @@ void quickSort(int *pData, int m, int n) {
 void makeHeap(int *pData, int size) {
     int k, i, j, item;
 
-    for(k = 1; k < size; k++) {
+    for (k = 1; k < size; k++) {
         item = pData[k];
         i = k;
         j = (i - 1) / 2;
-        while(i > 0 && item > pData[j]) {
+        while (i > 0 && item > pData[j]) {
             pData[i] = pData[j];
             i = j;
             j = (i - 1) / 2;
@@ -161,18 +159,17 @@ void adjust(int *pData, int size) {
     j = 0;
     item = pData[j];
     i = 2 * j + 1;
-    while(i <= size - 1) {
-        if(i + 1 <= size - 1) {
-            if(pData[i] < pData[i + 1]) {
+    while (i <= size - 1) {
+        if (i + 1 <= size - 1) {
+            if (pData[i] < pData[i + 1]) {
                 i++;
             }
         }
-        if(item < pData[i]) {
+        if (item < pData[i]) {
             pData[j] = pData[i];
             j = i;
             i = 2 * j + 1;
-        }
-        else {
+        } else {
             break;
         }
     }
@@ -187,7 +184,7 @@ void adjust(int *pData, int size) {
 void heapSort(int *pData, int size) {
     int i, t;
     makeHeap(pData, size);
-    for(i = size - 1; i > 0; i--) {
+    for (i = size - 1; i > 0; i--) {
         t = pData[0];
         pData[0] = pData[i];
         pData[i] = t;
@@ -202,10 +199,10 @@ void heapSort(int *pData, int size) {
  */
 void selectionSort(int *pData, int size) {
     int i, j, min, temp;
-    for(i = 0; i < size; i++) {
+    for (i = 0; i < size; i++) {
         min = i;
-        for(j = i + 1; j < size; j++) {
-            if(pData[j] < pData[min]) {
+        for (j = i + 1; j < size; j++) {
+            if (pData[j] < pData[min]) {
                 min = j;
             }
         }
@@ -222,9 +219,9 @@ void selectionSort(int *pData, int size) {
  */
 void bubbleSort(int *pData, int size) {
     int i, j, temp;
-    for(i = size - 1; i >= 0; i--) {
-        for(j = 1; j <= i; j++) {
-            if(pData[j - 1] > pData[j]) {
+    for (i = size - 1; i >= 0; i--) {
+        for (j = 1; j <= i; j++) {
+            if (pData[j - 1] > pData[j]) {
                 temp = pData[j - 1];
                 pData[j - 1] = pData[j];
                 pData[j] = temp;
