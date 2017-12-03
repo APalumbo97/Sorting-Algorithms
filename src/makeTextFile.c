@@ -4,6 +4,7 @@
  * description: Generates a text file with random numbers.
  */
 
+#include <stdlib.h>
 #include <stdio.h>
 #define NUM_OF_INTEGERS 50000
 #define MAX_VAL 1000
